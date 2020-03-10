@@ -6,8 +6,8 @@ $(function() {
     function printerpoweronoffViewModel(parameters) {
         var self = this;
 
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BCM)
+        self.GPIO.setwarnings(False)
+        self.GPIO.setmode(GPIO.BCM)
 
         self.printerpowerOff = function () {
           self.GPIO.output(23, self.GPIO.HIGH)
@@ -18,8 +18,9 @@ $(function() {
         };
     }
 
-	OCTOPRINT_VIEWMODELS.push({
-        construct: printerpoweronoffViewModel,
-        elements: ["#sidebar_plugin_printerpoweronoff_wrapper"]
-    });
+	OCTOPRINT_VIEWMODELS.push([
+        printerpoweronoffViewModel,
+         ["settingsViewModel"],
+         ["#tab_plugin_printerpower"]
+    ]);
 });
