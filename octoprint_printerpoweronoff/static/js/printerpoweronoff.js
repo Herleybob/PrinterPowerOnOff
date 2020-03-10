@@ -7,7 +7,7 @@ $(function() {
         var self = this;
 
         self.printerpowerOff = function () {
-
+          self.GPIO.output(23, self.GPIO.HIGH)
         };
 
         self.printerpowerOn = function () {
