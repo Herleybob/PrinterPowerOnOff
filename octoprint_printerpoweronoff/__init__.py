@@ -8,6 +8,14 @@ class PrinterPowerOnOffPlugin(octoprint.plugin.StartupPlugin,
 				octoprint.plugin.TemplatePlugin,
 				octoprint.plugin.SettingsPlugin):
 
+	def __init__(self):
+        try:
+            global GPIO
+            import RPi.GPIO as GPIO
+            self._hasGPIO = True
+        except (ImportError, RuntimeError):
+            self._hasGPIO = False
+
 	def get_settings_defaults(self):
 		return dict(poweronCommand = "gpio -g write 23 0", poweroffCommand = "gpio -f write 23 1")
 
@@ -22,7 +30,7 @@ class PrinterPowerOnOffPlugin(octoprint.plugin.StartupPlugin,
 		)
 	def get_template_configs(self):
 		return [
-			dict(type="sidebar", name="Printer Power", icon="close", template="printerpoweronoff_sidebar.jinja2", styles=["display: none"], data_bind="visible: loginState.isUser"),
+			dict(type="sidebar", name="Printer Power", icon="list", template="printerpoweronoff_sidebar.jinja2", data_bind="visible: loginState.isUser"),
 			dict(type="settings", name="Printer Power Settings", template="printerpoweronoff_settings.jinja2", custom_bindings=False)
 			]
 
