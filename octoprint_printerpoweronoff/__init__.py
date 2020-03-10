@@ -2,19 +2,12 @@
 from __future__ import absolute_import
 
 import octoprint.plugin
+import RPi.GPIO as GPIO
 
 class PrinterPowerOnOffPlugin(octoprint.plugin.StartupPlugin,
 				octoprint.plugin.AssetPlugin,
 				octoprint.plugin.TemplatePlugin,
 				octoprint.plugin.SettingsPlugin):
-
-	def __init__(self):
-        try:
-            global GPIO
-            import RPi.GPIO as GPIO
-            self._hasGPIO = True
-        except (ImportError, RuntimeError):
-            self._hasGPIO = False
 
 	def get_settings_defaults(self):
 		return dict(poweronCommand = "gpio -g write 23 0", poweroffCommand = "gpio -f write 23 1")

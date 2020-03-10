@@ -7,17 +7,11 @@ $(function() {
         var self = this;
 
         self.printerpowerOff = function () {
-          try:
-            GPIO.output(23, GPIO.HIGH);
-          except (RuntimeError, ValueError) as e:
-            self._logger.error(e)
+          GPIO.output(23, GPIO.HIGH);
         };
 
         self.printerpowerOn = function () {
-          try:
-            GPIO.output(23, GPIO.LOW);
-          except (RuntimeError, ValueError) as e:
-            self._logger.error(e)
+          GPIO.output(23, GPIO.LOW);
         };
     }
 
