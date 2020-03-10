@@ -3,9 +3,9 @@
  * License: AGPLv3
  */
 $(function() {
-    function EstopViewModel(parameters) {
+    function printerpoweronoffViewModel(parameters) {
         var self = this;
-		
+
         self.loginState = parameters[0];
         self.printerState = parameters[1];
         self.settings = parameters[2];
@@ -22,9 +22,9 @@ $(function() {
 
         self.buttonText = ko.pureComputed(function() {
             if (self.enableEstop()) {
-                return gettext("EMERGENCY STOP"); 
+                return gettext("EMERGENCY STOP");
             } else {
-                return gettext("Offline"); 
+                return gettext("Offline");
             }
         });
 
@@ -38,18 +38,18 @@ $(function() {
         }
 		self.sendEstopCommand = function () {
 			if (self.enableEstop()) {
-                self.estopCommand(self.settings.settings.plugins.estop.estopCommand());
+                self.estopCommand(self.settings.settings.plugins.printerpoweronoff.estopCommand());
                 OctoPrint.control.sendGcode(self.estopCommand());
 			};
         };
     }
 
 	OCTOPRINT_VIEWMODELS.push({
-        construct: EstopViewModel,
+        construct: printerpoweronoffViewModel,
         dependencies: [
-			"loginStateViewModel", 
+			"loginStateViewModel",
 			"printerStateViewModel",
 			"settingsViewModel"],
-        elements: ["#sidebar_plugin_estop_wrapper"]
+        elements: ["#sidebar_plugin_printerpoweronoff_wrapper"]
     });
 });
