@@ -7,11 +7,11 @@ $(function() {
         var self = this;
 
         self.printerpowerOff = function () {
-          GPIO.output(23, GPIO.HIGH);
+          //GPIO.output(23, GPIO.HIGH);
         };
 
         self.printerpowerOn = function () {
-          GPIO.output(23, GPIO.LOW);
+          //GPIO.output(23, GPIO.LOW);
         };
     }
 
