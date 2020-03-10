@@ -10,11 +10,27 @@ $(function() {
         GPIO.setmode(GPIO.BCM)
 
         self.printerpowerOff = function () {
-          GPIO.output(23, self.GPIO.HIGH)
+          $.ajax({
+                url: API_BASEURL + "plugin/PrinterPowerOnOffPlugin",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: "printerpowerOff"
+                }),
+                contentType: "application/json; charset=UTF-8"
+            })
         };
 
         self.printerpowerOn = function () {
-          GPIO.output(23, self.GPIO.LOW)
+          $.ajax({
+                url: API_BASEURL + "plugin/PrinterPowerOnOffPlugin",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({
+                    command: "printerpowerOn"
+                }),
+                contentType: "application/json; charset=UTF-8"
+            })
         };
     }
 
