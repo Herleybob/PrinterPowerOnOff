@@ -1,2 +1,2 @@
 include README.md
-recursive-include octoprint_estop *
+recursive-include octoprint_printerpoweronoff *
