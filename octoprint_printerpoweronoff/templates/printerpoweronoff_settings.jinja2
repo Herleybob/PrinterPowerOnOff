@@ -1,0 +1,19 @@
+<h3>{{ _('Printer Power Settings') }}</h3>
+<div>
+    <p>Here you can change the commands issued to your printer when you press the power buttons.</p>
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label">{{ _('Power On Command') }}</label>
+            <div class="controls">
+                <input type="text" class="input-block" data-bind="value: settings.plugins.printerpoweronoff.poweronCommand">
+                <span class="help-block">Leave this unless you change pins or something.</span>
+            </div>
+
+            <label class="control-label">{{ _('Power Off Command') }}</label>
+            <div class="controls">
+                <input type="text" class="input-block" data-bind="value: settings.plugins.printerpoweronoff.poweroffCommand">
+                <span class="help-block">Leave this unless you change pins or something.</span>
+            </div>
+        </div>
+    </form>
+</div>
